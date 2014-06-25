@@ -36,7 +36,7 @@ If you have never used Grunt and Bower you can run the following commands in the
 1. `[sudo] npm install`
 1. `npm install -g grunt-cli`
 1. `bower install`
-`
+
 
 ### line-by-line explanation
 In **line 1** Node.js will install all dependencies listed in package.json. These already contain Grunt and Bower itself. 
