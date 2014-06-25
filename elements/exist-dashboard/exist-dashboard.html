@@ -34,8 +34,11 @@
             }
 
             #core_toolbar {
-                color: rgb(255, 255, 255);
-                background-color: rgb(79, 125, 201);
+                color: red;
+                background: lime;
+                background:url('../../resources/images/existdb.gif') no-repeat 15px center;
+                background-size:50% auto;
+
             }
 
             #core_menu {
@@ -59,10 +62,12 @@
                 left: 0px;
                 background-color: rgb(255, 255, 255);
             }
+
         </style>
         <core-scaffold id="core_scaffold">
             <core-header-panel id="core_header_panel" navigation flex>
-                <core-toolbar id="core_toolbar"></core-toolbar>
+                <core-toolbar id="core_toolbar">
+                </core-toolbar>
                 <core-menu selected="Packages" valueattr="label" selectedindex="2" id="core_menu"
                            theme="core-light-theme">
                     <core-item label="Backup" icon="backup" id="core_item" horizontal center layout></core-item>
