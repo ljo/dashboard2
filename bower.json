@@ -1,0 +1,8 @@
+{
+  "name": "designer",
+  "private": true,
+  "dependencies": {
+    "platform": "Polymer/platform#master",
+    "core-elements": "Polymer/core-elements#master"
+  }
+}

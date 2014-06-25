@@ -1,0 +1,96 @@
+<link href="../polymer/polymer.html" rel="import">
+<link rel="import" href="../core-scaffold/core-scaffold.html">
+<link rel="import" href="../core-header-panel/core-header-panel.html">
+<link rel="import" href="../core-menu/core-menu.html">
+<link rel="import" href="../core-item/core-item.html">
+<link rel="import" href="../core-icon-button/core-icon-button.html">
+<link rel="import" href="../core-toolbar/core-toolbar.html">
+<link rel="import" href="../core-menu/core-submenu.html">
+<link rel="import" href="../exist-icon-list/exist-icon-list.html">
+
+<polymer-element name="exist-dashboard">
+
+    <template>
+        <style>
+            :host {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                box-sizing: border-box;
+            }
+
+            #core_scaffold {
+                position: absolute;
+                top: 0px;
+                right: 0px;
+                bottom: 0px;
+                left: 0px;
+                width: 100%;
+                height: 100%;
+            }
+
+            #core_header_panel {
+                background-color: rgb(255, 255, 255);
+            }
+
+            #core_toolbar {
+                color: rgb(255, 255, 255);
+                background-color: rgb(79, 125, 201);
+            }
+
+            #core_menu {
+                font-size: 16px;
+            }
+
+            #div {
+                padding: 5px;
+            }
+
+            #core_card {
+                width: 100%;
+                height: 100%;
+                border-top-left-radius: 2px;
+                border-top-right-radius: 2px;
+                border-bottom-right-radius: 2px;
+                border-bottom-left-radius: 2px;
+                box-shadow: rgba(0, 0, 0, 0.0980392) 0px 2px 4px, rgba(0, 0, 0, 0.0980392) 0px 0px 3px;
+                position: absolute;
+                top: 0px;
+                left: 0px;
+                background-color: rgb(255, 255, 255);
+            }
+        </style>
+        <core-scaffold id="core_scaffold">
+            <core-header-panel id="core_header_panel" navigation flex>
+                <core-toolbar id="core_toolbar"></core-toolbar>
+                <core-menu selected="Packages" valueattr="label" selectedindex="2" id="core_menu"
+                           theme="core-light-theme">
+                    <core-item label="Backup" icon="backup" id="core_item" horizontal center layout></core-item>
+                    <core-item label="Collections" icon="drawer" id="core_item1" horizontal center layout></core-item>
+                    <core-item label="Packages" icon="settings" id="core_item2" horizontal center layout
+                               active></core-item>
+                    <core-item label="Users" icon="settings" id="core_item3" horizontal center layout></core-item>
+                    <core-item label="Monitoring" icon="settings" id="core_item4" horizontal center layout></core-item>
+                    <core-item label="eXide" icon="settings" id="core_item5" horizontal center layout></core-item>
+                    <core-item label="Scheduler" icon="settings" id="core_item6" horizontal center layout></core-item>
+                </core-menu>
+            </core-header-panel>
+            <div id="div" tool>Dashboard</div>
+            <core-card id="core_card" layout vertical>
+                <exist-icon-list></exist-icon-list>
+            </core-card>
+        </core-scaffold>
+    </template>
+    <script>
+        Polymer('exist-dashboard', {
+
+            created: function () {
+                console.log("exist-dashboard created ...");
+            },
+            ready: function () {
+            }
+
+
+        });
+    </script>
+</polymer-element>
