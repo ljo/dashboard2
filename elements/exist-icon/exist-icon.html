@@ -1,9 +1,12 @@
 <link href="../polymer/polymer.html" rel="import">
+<link rel="import" href="../paper-ripple/paper-ripple.html">
+
 
 <polymer-element name="exist-icon" attributes="src size title appURL requireLogin">
 
     <template>
-        <li><img src="{{src}}"/></li>
+        <li on-click="{{clickAction}}">
+        </li>
         <style>
             li{
                 background: transparent;
@@ -27,6 +30,11 @@
                 console.log("exist-icon created ...");
             },
             ready:function(){
+            },
+
+            clickAction:function(){
+                console.log("li clicked");
+                return false;
             }
 
 

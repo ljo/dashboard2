@@ -3,6 +3,7 @@
   "private": true,
   "dependencies": {
     "platform": "Polymer/platform#master",
-    "core-elements": "Polymer/core-elements#master"
+    "core-elements": "Polymer/core-elements#master",
+    "font-awesome": "~4.1.0"
   }
 }

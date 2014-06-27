@@ -12,6 +12,8 @@
 
     <template>
         <style>
+            @import "/components/font-awesome/css/font-awesome.css";
+
             :host {
                 position: absolute;
                 width: 100%;
@@ -19,11 +21,12 @@
                 box-sizing: border-box;
             }
 
+
             #core_scaffold {
                 position: absolute;
                 top: 0px;
                 right: 0px;
-                bottom: 0px;
+                bottom: 50px;
                 left: 0px;
                 width: 100%;
                 height: 100%;
@@ -63,21 +66,45 @@
                 background-color: rgb(255, 255, 255);
             }
 
+            core-item{
+                font-size:1.2em;
+                margin-left:10px;
+                position: absolute;
+                left:40px;
+                color:#4c4b4d;
+            }
+
+            core-item:before{
+                color:#848687;
+                position:absolute;
+                left:-30px;
+                top:10px;
+            }
+            core-item.core-selected{
+                color:#4c4b4d;
+            }
+
+            core-item.core-selected:before{
+                color:#0088cc;
+            }
+
         </style>
+
+
         <core-scaffold id="core_scaffold">
             <core-header-panel id="core_header_panel" navigation flex>
                 <core-toolbar id="core_toolbar">
                 </core-toolbar>
                 <core-menu selected="Packages" valueattr="label" selectedindex="2" id="core_menu"
                            theme="core-light-theme">
-                    <core-item label="Backup" icon="backup" id="core_item" horizontal center layout></core-item>
-                    <core-item label="Collections" icon="drawer" id="core_item1" horizontal center layout></core-item>
-                    <core-item label="Packages" icon="settings" id="core_item2" horizontal center layout
-                               active></core-item>
-                    <core-item label="Users" icon="settings" id="core_item3" horizontal center layout></core-item>
-                    <core-item label="Monitoring" icon="settings" id="core_item4" horizontal center layout></core-item>
-                    <core-item label="eXide" icon="settings" id="core_item5" horizontal center layout></core-item>
-                    <core-item label="Scheduler" icon="settings" id="core_item6" horizontal center layout></core-item>
+
+                    <core-item label="Backup" class="fa fa-history" id="core_item"></core-item>
+                    <core-item label="Collections" class="fa fa-database" id="core_item1" horizontal center layout></core-item>
+                    <core-item label="Packages" class="fa fa-cube" id="core_item2" horizontal center layout active></core-item>
+                    <core-item label="Users" class="fa fa-user" id="core_item3" horizontal center layout></core-item>
+                    <core-item label="Monitoring" class="fa fa-tachometer" id="core_item4" horizontal center layout></core-item>
+                    <core-item label="Scheduler" class="fa fa-clock-o" id="core_item6" horizontal center layout></core-item>
+                    <core-item label="Shutdown" class="fa fa-power-off" id="core_item6" horizontal center layout></core-item>
                 </core-menu>
             </core-header-panel>
             <div id="div" tool>Dashboard</div>
