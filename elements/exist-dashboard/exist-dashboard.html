@@ -10,7 +10,7 @@
 <polymer-element name="exist-dashboard">
 
     <template>
-        <style shim-shadowdom>
+        <style>
             @import "/components/font-awesome/css/font-awesome.css";
 
             :host {
@@ -30,17 +30,15 @@
                 width: 100%;
                 height: 100%;
             }
-
-            #core_header_panel {
-                background-color: rgb(255, 255, 255);
+            /* this styles the right side of the header - the toolbar within! the scaffold */
+            #core_scaffold::shadow core-toolbar{
+                background-color: #0088cc;
             }
 
-            #core_toolbar {
-                color: red;
-                background: lime;
+            #core_scaffold #core_toolbar {
                 background:url('../../resources/images/existdb.gif') no-repeat 15px center;
                 background-size:50% auto;
-
+                background-color: white;
             }
 
             #core_menu {
@@ -49,7 +47,7 @@
                 margin:0;
             }
 
-            #div {
+            #dashboardTitle {
                 padding: 5px;
             }
 
@@ -96,7 +94,9 @@
                     <exist-item label="Shutdown" id="core_item6" horizontal center layout><i class="fa fa-power-off"></i></exist-item>
                 </core-menu>
             </core-header-panel>
-            <div id="div" tool>Dashboard</div>
+
+            <div id="dashboardTitle" tool>Dashboard</div>
+
             <core-card id="core_card" layout vertical>
                 <exist-icon-list></exist-icon-list>
             </core-card>

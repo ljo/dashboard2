@@ -4,6 +4,7 @@
   "dependencies": {
     "platform": "Polymer/platform#master",
     "core-elements": "Polymer/core-elements#master",
-    "font-awesome": "~4.1.0"
+    "font-awesome": "~4.1.0",
+    "paper-progress": "Polymer/paper-progress#~0.3.3"
   }
 }
