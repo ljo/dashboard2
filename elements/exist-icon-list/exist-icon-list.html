@@ -1,5 +1,5 @@
 <link href="../polymer/polymer.html" rel="import">
-<link href="../exist-icon/exist-icon.html" rel="import">
+<link href="../exist-app-icon/exist-app-icon.html" rel="import">
 <link href="../core-ajax/core-ajax.html" rel="import">
 
 <polymer-element name="exist-icon-list" attributes="items url">
@@ -17,8 +17,12 @@
             </template>
 
             <template if="{{}}">
-                <exist-icon src="" title="" appURL="" requireLogin="true"></exist-icon>
-                <exist-icon src="" title="" appURL="" requireLogin=""></exist-icon>
+                <exist-icon src="" title="" appURL="" requireLogin="true">
+
+                </exist-icon>
+                <exist-icon src="" title="" appURL="" requireLogin="">
+
+                </exist-icon>
                 <exist-icon src="" title="" appURL="" requireLogin=""></exist-icon>
                 <exist-icon src="" title="" appURL="" requireLogin=""></exist-icon>
                 <exist-icon src="" title="" appURL="" requireLogin=""></exist-icon>

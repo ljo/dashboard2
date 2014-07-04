@@ -2,10 +2,11 @@
 <link rel="import" href="../paper-ripple/paper-ripple.html">
 
 
-<polymer-element name="exist-icon" attributes="src size title appURL requireLogin">
+<polymer-element name="exist-app-icon" attributes="src size title appURL requireLogin">
 
     <template>
         <li on-click="{{clickAction}}">
+            <paper-ripple class="circle recenteringTouch" fit></paper-ripple>
         </li>
         <style>
             li{
@@ -19,7 +20,7 @@
         </style>
     </template>
     <script>
-        Polymer('exist-icon', {
+        Polymer('exist-app-icon', {
             src: '',
             size: 24,
             title:'',
@@ -34,7 +35,7 @@
 
             clickAction:function(){
                 console.log("li clicked");
-                return false;
+                return true;
             }
 
 

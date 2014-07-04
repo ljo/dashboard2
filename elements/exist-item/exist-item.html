@@ -1,0 +1,68 @@
+<link href="../../components/polymer/polymer.html" rel="import">
+<link href="../../components/core-item/core-item.html" rel="import">
+<link href="../../components/paper-ripple/paper-ripple.html" rel="import">
+
+<!--
+`exist-item` is a simple line-item object: a label and/or an icon that can also
+act as a link.
+
+Example:
+
+    <exist-item icon="settings" label="Settings"></exist-item>
+    
+To use as a link, put &lt;a&gt; element in the item.
+
+Example:
+
+    <exist-item icon="settings" label="Settings">
+      <a href="#setting s" target="_self"></a>
+    </exist-item>
+
+-->
+
+<link rel="stylesheet" href="exist-item.css" shim-shadowdom>
+
+<polymer-element name="exist-item" extends="core-item" attributes="label icon" horizontal center layout>
+    <template>
+        <style>
+            .core-selected i:before{
+                color:blue;
+            }
+            paper-ripple{
+                color:#0088cc;
+            }
+        </style>
+        <div><paper-ripple  class="recenteringTouch" fit></paper-ripple><content></content>{{label}}</div>
+    </template>
+    <script>
+
+        Polymer('exist-item', {
+
+            /**
+             * The URL of an image for the icon.
+             *
+             * @attribute src
+             * @type string
+             * @default ''
+             */
+
+            /**
+             * Specifies the icon from the Polymer icon set.
+             *
+             * @attribute icon
+             * @type string
+             * @default ''
+             */
+
+            /**
+             * Specifies the label for the menu item.
+             *
+             * @attribute label
+             * @type string
+             * @default ''
+             */
+
+        });
+
+    </script>
+</polymer-element>

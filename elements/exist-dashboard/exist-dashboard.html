@@ -2,16 +2,15 @@
 <link rel="import" href="../core-scaffold/core-scaffold.html">
 <link rel="import" href="../core-header-panel/core-header-panel.html">
 <link rel="import" href="../core-menu/core-menu.html">
-<link rel="import" href="../core-item/core-item.html">
-<link rel="import" href="../core-icon-button/core-icon-button.html">
 <link rel="import" href="../core-toolbar/core-toolbar.html">
 <link rel="import" href="../core-menu/core-submenu.html">
-<link rel="import" href="../exist-icon-list/exist-icon-list.html">
+<link rel="import" href="../exist-item/exist-item.html">
+<link rel="import" href="../paper-ripple/paper-ripple.html">
 
 <polymer-element name="exist-dashboard">
 
     <template>
-        <style>
+        <style shim-shadowdom>
             @import "/components/font-awesome/css/font-awesome.css";
 
             :host {
@@ -46,6 +45,8 @@
 
             #core_menu {
                 font-size: 16px;
+                padding: 0;
+                margin:0;
             }
 
             #div {
@@ -66,28 +67,17 @@
                 background-color: rgb(255, 255, 255);
             }
 
-            core-item{
-                font-size:1.2em;
-                margin-left:10px;
-                position: absolute;
-                left:40px;
-                color:#4c4b4d;
+            exist-item{
+                padding: 20px;
             }
-
-            core-item:before{
-                color:#848687;
-                position:absolute;
-                left:-30px;
-                top:10px;
+            exist-item i{
+                margin-right: 20px;
+                font-size: 24px;
+                vertical-align: middle;
             }
-            core-item.core-selected{
-                color:#4c4b4d;
-            }
-
-            core-item.core-selected:before{
+            exist-item.core-selected i:before {
                 color:#0088cc;
             }
-
         </style>
 
 
@@ -95,16 +85,15 @@
             <core-header-panel id="core_header_panel" navigation flex>
                 <core-toolbar id="core_toolbar">
                 </core-toolbar>
-                <core-menu selected="Packages" valueattr="label" selectedindex="2" id="core_menu"
+                <core-menu selected="Packages" valueattr="label" selectedindex="0" id="core_menu"
                            theme="core-light-theme">
-
-                    <core-item label="Backup" class="fa fa-history" id="core_item"></core-item>
-                    <core-item label="Collections" class="fa fa-database" id="core_item1" horizontal center layout></core-item>
-                    <core-item label="Packages" class="fa fa-cube" id="core_item2" horizontal center layout active></core-item>
-                    <core-item label="Users" class="fa fa-user" id="core_item3" horizontal center layout></core-item>
-                    <core-item label="Monitoring" class="fa fa-tachometer" id="core_item4" horizontal center layout></core-item>
-                    <core-item label="Scheduler" class="fa fa-clock-o" id="core_item6" horizontal center layout></core-item>
-                    <core-item label="Shutdown" class="fa fa-power-off" id="core_item6" horizontal center layout></core-item>
+                    <exist-item label="Packages" id="core_item2" horizontal center layout active><i class="fa fa-cube"></i></exist-item>
+                    <exist-item label="Collections" id="core_item1"><i class="fa fa-database"></i></exist-item>
+                    <exist-item label="Users" id="core_item3" horizontal center layout><i class="fa fa-user"></i></exist-item>
+                    <exist-item label="Monitoring" id="core_item4" horizontal center layout><i class="fa fa-tachometer"></i></exist-item>
+                    <exist-item label="Scheduler" id="core_item6" horizontal center layout><i class="fa fa-clock-o"></i></exist-item>
+                    <exist-item label="Backup" action="doit" id="core_item"><i class="fa fa-history"></i></exist-item>
+                    <exist-item label="Shutdown" id="core_item6" horizontal center layout><i class="fa fa-power-off"></i></exist-item>
                 </core-menu>
             </core-header-panel>
             <div id="div" tool>Dashboard</div>
