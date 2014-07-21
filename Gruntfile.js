@@ -13,6 +13,71 @@ module.exports = function(grunt) {
     var httpServerPort = 9001;
 
     grunt.initConfig({
+        xar: grunt.file.readJSON('package.json'),
+        
+        replace: {
+            pkg: {
+                src: ['expath-pkg.tmpl'],
+                dest: 'expath-pkg.xml',
+                replacements: [
+                    {
+                        from: '@APPVERSION@',
+                        to: '<%= xar.version %>'
+                    },
+                    {
+                        from: '@APPNAME@',
+                        to: '<%= xar.name %>'
+                    },
+                    {
+                        from: '@APPDESCRIPTION@',
+                        to: '<%= xar.description %>'
+                    }
+                ]
+            },
+            repo: {
+                src: ['repo.xml.tmpl'],
+                dest: 'repo.xml',
+                replacements: [
+                    {
+                        from: '@APPVERSION@',
+                        to: '<%= xar.version %>'
+                    },
+                    {
+                        from: '@APPNAME@',
+                        to: '<%= xar.name %>'
+                    },
+                    {
+                        from: '@APPDESCRIPTION@',
+                        to: '<%= xar.description %>'
+                    }
+                ]
+            }
+        },
+        
+        clean: {
+            build: ['build'],
+            componentsZip: ['components.zip']
+        },
+        
+        zip: {
+            components: {
+                src: [
+                    'components/**'
+                ],
+                dest: 'components.zip'
+            },
+            xar: {
+                src: [
+                    'components.zip',
+                    '*.xml',
+                    '*.xql',
+                    '*.html',
+                    'modules/**'
+                ],
+                dest: 'build/<%=xar.name%>-<%=xar.version%>.zip'
+            }
+        },
+        
         //WATCH tasks
         watch: {
             options: {
@@ -21,7 +86,7 @@ module.exports = function(grunt) {
             },
             elementsScripts: {
                 files: ['elements/**'],
-                tasks: ['rsync:developmentElements']
+                tasks: ['rsync:developmentElements', 'webdav_sync']
             },
             target: {
                 options: {
@@ -55,9 +120,27 @@ module.exports = function(grunt) {
                     dest: 'components/'
                 }
             }
+        },
+        webdav_sync: {
+            default: {
+                options: {
+                   local_path: '**',
+                   remote_path: 'http://admin@localhost:8080/exist/webdav/db/apps/dashboard2'
+                }
+            }
         }
     });
 
+    grunt.registerTask('dist-development', [
+        'clean:build',
+        'clean:componentsZip',
+        'rsync',
+        'replace',
+        'zip:components',
+        'zip:xar',
+         'clean:componentsZip'
+    ]);
+    
     grunt.registerTask('server',  [
         'connect:livereload',
         'watch'
