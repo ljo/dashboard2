@@ -5,53 +5,15 @@
 <polymer-element name="exist-icon-list" attributes="items url">
 
     <template>
-        <template if="{{url}}">
-            <core-ajax id="coreAjax" url="{{url}}"
-                   params='{"plugins":"true", "format":"all", "type":"local"}'
-                   handleAs="xml"></core-ajax>
-        </template>
-
-        <ul>
-            <template if="{{items}}" repeat="{{item in items}}">
-                <exist-icon src="{{item}}"></exist-icon>
-            </template>
-
-            <template if="{{}}">
-                <exist-icon src="" title="" appURL="" requireLogin="true">
-
-                </exist-icon>
-                <exist-icon src="" title="" appURL="" requireLogin="">
-
-                </exist-icon>
-                <exist-icon src="" title="" appURL="" requireLogin=""></exist-icon>
-                <exist-icon src="" title="" appURL="" requireLogin=""></exist-icon>
-                <exist-icon src="" title="" appURL="" requireLogin=""></exist-icon>
-                <exist-icon src="" title="" appURL="" requireLogin=""></exist-icon>
-                <exist-icon src="" title="" appURL="" requireLogin=""></exist-icon>
-            </template>
-
+        <div>
             <content></content>
-        </ul>
+        </div>
 
         <style>
             :host {
                 display: block;
-                position: absolute;
-                top: 0;
-                left: 0;
-                bottom: 0;
-                right: 0;
-            }
-
-            ul{
-                padding: 0;
-                list-style:none;
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-
+                margin: 0 auto;
+                max-width: 740px;
             }
         </style>
     </template>
@@ -64,6 +26,7 @@
                 console.log("exist-icon-list created ...");
             },
             ready:function(){
+                console.log("exist-icon-list ready ...");
                 //var ajax = this.$.coreAjax;
                 //ajax.go();
             }

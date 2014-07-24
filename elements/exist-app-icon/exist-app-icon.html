@@ -1,23 +1,42 @@
 <link href="../polymer/polymer.html" rel="import">
-<link rel="import" href="../paper-ripple/paper-ripple.html">
+<link href="/components/paper-ripple/paper-ripple.html" rel="import">
 
 
-<polymer-element name="exist-app-icon" attributes="src size title appURL requireLogin">
+<polymer-element name="exist-app-icon" attributes="src size title appURL requireLogin label">
 
     <template>
-        <li on-click="{{clickAction}}">
-            <paper-ripple class="circle recenteringTouch" fit></paper-ripple>
-        </li>
+        <div id="container">
+            <content></content>
+            <div id="label">{{label}}</div>
+            <paper-ripple class="recenteringTouch" fit></paper-ripple>
+        </div>
+
         <style>
-            li{
-                background: transparent;
+            :host{
+                display: inline-block;
                 margin:10px;
-                width:150px;
-                height:150px;
+                min-width:160px;
+                min-height:160px;
                 float:left;
                 border:thin solid #ddd;
+                display: block;
+                position: relative;
+                border-radius: 3px;
+
+            }
+            paper-ripple{
+                color:#0088cc;
+            }
+            #label{
+                width: 100%;
+                position: absolute;
+                bottom:0;
+                color:black;
+                text-align: center;
+                margin-bottom: 3px;
             }
         </style>
+
     </template>
     <script>
         Polymer('exist-app-icon', {
@@ -25,19 +44,14 @@
             size: 24,
             title:'',
             appURL:'',
+
             requireLogin:'',
 
             created: function () {
                 console.log("exist-icon created ...");
             },
             ready:function(){
-            },
-
-            clickAction:function(){
-                console.log("li clicked");
-                return true;
             }
-
 
         });
     </script>

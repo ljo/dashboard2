@@ -5,6 +5,7 @@
 <link rel="import" href="../core-toolbar/core-toolbar.html">
 <link rel="import" href="../core-menu/core-submenu.html">
 <link rel="import" href="../exist-item/exist-item.html">
+<link rel="import" href="../exist-icon-list/exist-icon-list.html">
 <link rel="import" href="../paper-ripple/paper-ripple.html">
 
 <polymer-element name="exist-dashboard">
@@ -25,7 +26,7 @@
                 position: absolute;
                 top: 0px;
                 right: 0px;
-                bottom: 50px;
+                bottom: 0px;
                 left: 0px;
                 width: 100%;
                 height: 100%;
@@ -51,7 +52,7 @@
                 padding: 5px;
             }
 
-            #core_card {
+            #dancefloor {
                 width: 100%;
                 height: 100%;
                 border-top-left-radius: 2px;
@@ -62,7 +63,11 @@
                 position: absolute;
                 top: 0px;
                 left: 0px;
-                background-color: rgb(255, 255, 255);
+                bottom:0;
+                right: 0;
+                /*background-color: rgb(255, 255, 255);*/
+                background: url(../../resources/images/background2.png) no-repeat;
+                background-size: 100% 100%;
             }
 
             exist-item{
@@ -76,16 +81,20 @@
             exist-item.core-selected i:before {
                 color:#0088cc;
             }
+            #app-toolbar{
+                border:thin solid white;
+            }
         </style>
 
 
         <core-scaffold id="core_scaffold">
             <core-header-panel id="core_header_panel" navigation flex>
                 <core-toolbar id="core_toolbar">
+
                 </core-toolbar>
-                <core-menu selected="Packages" valueattr="label" selectedindex="0" id="core_menu"
+                <core-menu selected="" valueattr="label" selectedindex="0" id="core_menu"
                            theme="core-light-theme">
-                    <exist-item label="Packages" id="core_item2" horizontal center layout active><i class="fa fa-cube"></i></exist-item>
+                    <exist-item label="Packages" on-tap={{showPackageManager}}" id="core_item2" horizontal center layout active><i class="fa fa-cube"></i></exist-item>
                     <exist-item label="Collections" id="core_item1"><i class="fa fa-database"></i></exist-item>
                     <exist-item label="Users" id="core_item3" horizontal center layout><i class="fa fa-user"></i></exist-item>
                     <exist-item label="Monitoring" id="core_item4" horizontal center layout><i class="fa fa-tachometer"></i></exist-item>
@@ -95,10 +104,27 @@
                 </core-menu>
             </core-header-panel>
 
-            <div id="dashboardTitle" tool>Dashboard</div>
+            <div tool id="global-toolbar">
+                <!--<div id="dashboardTitle">Dashboard</div>-->
+                <core-icon-button icon="refresh" class="bottom"></core-icon-button>
+                <core-icon-button icon="add" class="bottom"></core-icon-button>
+            </div>
 
-            <core-card id="core_card" layout vertical>
-                <exist-icon-list></exist-icon-list>
+            <div tool id="app-toolbar">
+                <div id="dashboardTitle">App Toolbar</div>
+            </div>
+
+            <core-card id="dancefloor" layout vertical>
+                <exist-icon-list>
+                    <exist-app-icon src="" title="" appURL="" requireLogin="true" label="app 1"></exist-app-icon>
+                    <exist-app-icon src="" title="" appURL="" requireLogin="" label="app 2"></exist-app-icon>
+                    <exist-app-icon src="" title="" appURL="" requireLogin="" label="app 3"></exist-app-icon>
+                    <exist-app-icon src="" title="" appURL="" requireLogin="" label="app 4"></exist-app-icon>
+                    <exist-app-icon src="" title="" appURL="" requireLogin="" label="app 5"></exist-app-icon>
+                    <exist-app-icon src="" title="" appURL="" requireLogin="" label="app 6"></exist-app-icon>
+                    <exist-app-icon src="" title="" appURL="" requireLogin="" label="long long app label description"></exist-app-icon>
+
+                </exist-icon-list>
             </core-card>
         </core-scaffold>
     </template>
@@ -109,8 +135,10 @@
                 console.log("exist-dashboard created ...");
             },
             ready: function () {
+            },
+            showPackageManager:function(){
+                console.log("open PackageManager");
             }
-
 
         });
     </script>
