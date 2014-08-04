@@ -4,3 +4,4 @@ node_modules/*
 nbproject/*
 repo.xml
 expath-pkg.xml
+*.log
